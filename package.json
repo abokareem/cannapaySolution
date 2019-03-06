@@ -1,0 +1,28 @@
+{
+  "name": "canabis-website",
+  "version": "1.0.0",
+  "description": "SYS366 website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Potters",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "multer": "^1.4.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abuZayed15/web-apps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abuZayed15/web-apps/issues"
+  },
+  "homepage": "https://github.com/abuZayed15/web-apps#readme"
+}

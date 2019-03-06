@@ -1,0 +1,52 @@
+<div class="row">
+  <aside class="col-md-3">
+    <h2>The following has been added in Iteration 2</h2>
+    <ul>
+      <li>Modifications to the system use case diagram</li>
+      <li>Business Rules</li>
+      <li>Casual Use Case Specifications</li>
+    </ul>
+  </aside>
+  <section class="main col-md-9">
+    <article>
+      <h2>System Use Case Diagram</h2>
+      <br><br>
+      <img src="/images/UseCaseDiagramUPDATED.png" alt="Use Case Diagram Iteration #2" width="1000" height="1000">
+      <br><br>
+      <h2 id='bRules'>Business Rules</h2><br>
+      <ol>
+        <li>Young customers must show ID at the store entrance or when purchasing the gift card.</li>
+        <li>The creation of a transaction log must record the location, transaction status, payment amount and
+          associate this
+          information with the deposit code printed on the back of the card.</li>
+        <li>Account authorization and creation must be done by the customer for security reasons.</li>
+        <li>An unauthorized card cannot be loaded at the store immediately after purchase as there would be no
+          account to
+          deposit the money into.</li>
+        <li>The customer must provide a valid password and PIN in order to authorize the gift card account.</li>
+        <li>The customer must setup the gift card as a payee to their bank account and transfer funds to the card
+          via payments
+          or e-transfers.</li>
+        <li>If the card is lost or stolen, the customer may deactivate it by logging onto the system’s website/app
+          and using the
+          PIN associated with the account.</li>
+        <li>A deactivated card may be reactivated using the same method for deactivation once retrieved.</li>
+      </ol>
+      <br>
+      <h2 id="casual">Casual Use Case Specifications</h2><br>
+      <h4>Brief Description:</h4>
+      <p>This case allows cannabis customers to make anonymous electronic transactions.</p><br>
+      <p><b>Scenario 1:</b> Gift card account authorization and setup without error.</p><br>
+      <p><b>Preconditions:</b> The customer owns an activated, unauthorized gift card and has created a log of the
+        first transaction.</p><br><br>
+      <img src="/images/Scenario1.PNG" alt="Scenario 1 Table" width="700" height="700"><br><br>
+      <p><b>Successful Post-Conditions:</b> An account associated with the purchased card is authorized and
+        created. This account can be accessed at any time and
+        funds can be transferred to it from any bank account.</p><br><br><br>
+      <p><b>Scenario 2:</b> Making a successful transaction(s) with the gift card</p><br>
+      <p><b>Preconditions:</b> A gift card with an authorized and active account whose balance is more than zero</p><br><br>
+      <img src="/images/Scenario2.PNG" alt="Scenario 1 Table" width="700" height="700"><br><br>
+      <p><b>Successful Post-Conditions:</b> A transaction is made using the gift card.</p><br><br><br>
+    </article>
+  </section>
+</div>

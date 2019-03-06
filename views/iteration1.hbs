@@ -1,0 +1,417 @@
+<div class="row">
+  <aside class="col-md-3">
+    <h2>League Members</h2>
+    <ul>
+      <li>Superman</li>
+      <p>Resposible for Star UML</p>
+      <li>Batman</li>
+      <p>Responsible for Used Case research</p>
+      <li>Wonder Woman</li>
+      <p>Responsible for Stakeholder research</p>
+      <li>Green Lantern</li>
+      <p>Resposible for website</p>
+    </ul>
+  </aside>
+  <section class="main col-md-9">
+    <article>
+      <h2 id="uml">Used Case Diagram for Starbuds</h2>
+      <p>This diagram shows each actor and their activities with corresponding actors</p>
+
+      <img src="/images/usedCaseDiagram.png" alt="Used Case Diagram" width="800" height="758">
+
+
+
+      <h2 id='stk'>Stakeholders</h2>
+      <ul>
+        <li>Government</li>
+        <li>Customers</li>
+        <li>Network processor manufacturers</li>
+        <li>Dispensaries</li>
+        <li>Gift Card Account Manager (Ample Payments)</li>
+        <li>Gift Card Manufacturer</li>
+        <li>Gift Card Sellers (Merchants)</li>
+        <li>Network</li>
+        <li>Issuing Bank</li>
+        <li>Marijuana Farmers</li>
+        <li>Scientist (Testing Labs)</li>
+        <li>Marijuana end-product manufacturers</li>
+        <li>Distributors</li>
+      </ul>
+
+      <h2 id='stkm'>Stakeholder Matrix</h2>
+
+      <table>
+        <tr>
+          <td>High Influence, Low Impact
+            <ol>
+              <li>Government</li>
+              <li>Issuing Bank</li>
+              <li>Gift Card Manufacturers</li>
+            </ol>
+          </td>
+          <td>High Influence, High Impact
+            <ol>
+              <li>Network</li>
+              <li>Gift Card Account Manager (Ample Payments)</li>
+              <li>Gift Card Sellers (Merchants)</li>
+              <li>Customers</li>
+            </ol>
+          </td>
+        </tr>
+        <tr>
+          <td>Low Influence, Low Impact</td>
+          <td>High Influence, Low Impact</td>
+        </tr>
+      </table>
+
+      <h2 id='ucs'>Use Case Specifications</h2><br><br>
+
+      <table style="width:100%">
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Pay for Gift Card</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>The customer pays the retailer where the gift card is sold to acquire the card. The fee comprises of a
+            one-time activation charge and a monthly fee.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Customer</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Buying the card</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Price is paid</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Activate Gift Card</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>The sales representative enters the gift card BIN (Bank Identification Number) into the database and sets
+            its state to &#39active&#39.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Merchant Sales Representative</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Once the card is bought</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>The gift card is activated</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Decline First Transaction</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>The sales representative swipes the card at a POS device and makes a transaction. Because a newly
+            activated card will have balance of $0, when the network associated with the card (VISA/Mastercard) tries
+            to verify the transaction, it will be declined and a log will be created.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Merchant Sales Representative</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>After the card has been activated.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>The first transaction is completed</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Verify/Decline Transaction</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>Whenever the magstripe on any card is swiped at a POS device, the device will connect to the affiliated
+            network and check the account balance associated with the card. If the balance is less than the payment
+            required, the transaction is declined. Otherwise, it is approved.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Network Server</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Swiping magstripe at POS device</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Transaction is either declined or approved</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Update Balance</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>If a transaction is approved, the network reduces the card balance, and if the transaction is declined,
+            the balance remains unchanged. If the balance is altered, the new balance must be synchronized with the
+            AmplePayments database.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Network Server</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Verification of transaction</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Balance is altered/unaltered and synced with AmplePayments servers</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Log Transaction</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>A log of the completed transaction is created by the network and synchronized with the AmplePayments
+            servers.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Network Server</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Completion of transaction</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Log of transaction is created</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Enter Card Details</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>The user must enter the card BIN and the deposit code printed on the back of the card on the
+            AmplePayments website/app. The application connects to Ample&#39s servers which looks up the BIN and
+            confirms that it has been activated.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Ample&#39s Servers</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Customer&#39s attempt to authorize the card</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Card authorization process is started</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Check First Transaction</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>The transaction log is retrieved by connecting to the network server. The card BIN and store location are
+            matched with the deposit code, and date along with the date and time of the declined transaction.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Ample&#39s Servers</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Entering card details on Ample&#39s website/app</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Card details are matched with the transaction log</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Authorize Account</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>if the first transaction match is successful, the card is authorized for use and the application allows
+            the user to setup an account.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Ample&#39s Servers</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Successful match of the first transaction and the card details</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>The card is now authorized for use</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Add Aliases</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>When setting up their account, the user can now enter an alias for their name, alternate addresses and
+            phone numbers, etc. and add the first layer to their anonymity. After a certain period of time, for added
+            security, the cardholder&#39s information will be changed randomly creating a new identity. The new
+            information will be hashed and encrypted.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Customer and Ample&#39s Servers</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>User-entered data</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Default alternate identity set up</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Load Card</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>The user can now add this account to their bank account(s) as a payee or as an account that funds can be
+            transferred to. Then, using only online banking, funds can be transferred over to the gift card account and
+            the new balance will be updated first on the network&#39s servers and then on Ample&#39s servers.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Customer, Ample&#39s Servers and bank account</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>User-entered funds amount</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Gift card account is recharged</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Finish Account Set Up</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>Other remaining information is entered such as login password and a PIN for locking/unlocking the card
+            using Ample&#39s application.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Customer and Ample&#39s Servers</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>User-entered data</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Gift card account set up is complete</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Purchase Item</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>The customer purchases an item at a retail store POS device using the prepaid gift card. The network will
+            connect to Ample&#39s servers to obtain the cardholder&#39s balance. After verifying the payment, updating
+            the balance, and logging the transaction, the current alias will appear on the invoice/receipt.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Customer and Ample&#39s Servers</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Magstripe Swipe at POS device</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Anonymous purchase is made</td>
+        </tr>
+      </table>
+      <br><br>
+      <table>
+        <tr>
+          <td style="font-weight: bold;">Name</td>
+          <td>Lock/Unlock Card</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Short description:</td>
+          <td>Customer can lock/unlock their card at any time on the Ample Payments website/app using a PIN. The lock
+            puts the card in a deactivated/insufficient funds state. All transactions using a locked card will be
+            declined with a special decline message: &#34Card is locked&#34.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Actor(s):</td>
+          <td>Customer and Ample&#39s Servers</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Trigger:</td>
+          <td>Stolen card or child safeguard</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Result:</td>
+          <td>Transactions halted until cardholder wishes</td>
+        </tr>
+      </table>
+      <br><br>
+
+    </article>
+  </section>
+</div>
